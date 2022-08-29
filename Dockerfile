@@ -1,9 +1,6 @@
-FROM maven:3.5.2-jdk-8
-
-RUN mkdir -p /app
-
-COPY . /app
-
-WORKDIR /app
-
-CMD mvn spring-boot:run
+FROM ubuntu
+RUN apt-get update
+RUN apt-get install -y nginx
+COPY index.html /var/www/html/
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
